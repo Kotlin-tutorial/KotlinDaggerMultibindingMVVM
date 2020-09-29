@@ -21,6 +21,7 @@ class MainActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         DaggerMyComponenet.create().inject(this)
         viewModel1 = ViewModelProviders.of(this,factory).get(ViewModel1::class.java)
@@ -29,12 +30,12 @@ class MainActivity: AppCompatActivity() {
 
         viewModel1.callData()
         viewModel1.getMutableDataString().observe(this, Observer {
-            text_1.setText(it)
+            text_1.text = it
         })
 
         viewModel2.callData()
         viewModel2.getMutableDataString().observe(this, Observer {
-            text_2.setText(it)
+            text_2.text = it
         })
 
 
